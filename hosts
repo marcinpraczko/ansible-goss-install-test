@@ -1,0 +1,5 @@
+# ---------------------
+# All targets - with required parameters for connections
+# ---------------------
+[targets]
+localhost   ansible_ssh_host=127.0.0.1

@@ -1,0 +1,11 @@
+---
+
+command:
+  version:
+    exit-status: 0
+    exec: "./bin/goss version"
+    stdout:
+    - goss version v0.3.8
+    stderr: []
+    timeout: 10000 # in milliseconds
+    skip: false

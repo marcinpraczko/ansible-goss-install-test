@@ -1,0 +1,36 @@
+name: Test - Run ansible to install goss
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Check available versions
+      run: |
+        ansible --version
+
+    - name: Install ansible roles from galaxy
+      run: |
+        ansible-galaxy install -r requirements.yml
+
+    - name: Run ansible
+      run: |
+        ansible all --list-hosts
+        ansible-playbook site.yml -v
+
+    - name: Check structure
+      run: |
+        ls -la
+
+    - name: Check goss version
+      run: |
+        ./bin/goss --version
+        ./bin/goss validate --format tap
