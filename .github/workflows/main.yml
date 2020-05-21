@@ -29,6 +29,7 @@ jobs:
     - name: Check structure
       run: |
         ls -la
+        ls -la bin
 
     - name: Check goss version
       run: |
